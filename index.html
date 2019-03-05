@@ -40,8 +40,9 @@
         Camera ready deadline: 2019 April 10<br /><br />
         
         Challenge kick-off: 2019 March 1<br /> 
-        Testing data release: 2019 March 31 <br />
-        Result submission deadline: 2019 April 15<br />
+        Testing data release: 2019 May 15 <br />
+        Result submission deadline: 2019 June 1<br />
+        Code release deadline: 2019 June 9<br />
         <!--Workshop: July 21, 2019-->
       </p>
 
@@ -68,15 +69,15 @@
       </h1>
       <hr />
 
-      <h3>In conjunction with CVPR 2019<br/> June 2019, Long Beach</h3>
+      <h3>In conjunction with CVPR 2019<br/> June 2019, Long Beach, California</h3>
 
-      <p>The <a href="https://reid-mct.github.io/2017/">1st MTMCT and ReID workshop</a> was successfully held in CVPR 2017. 
-        In the past two years, the MTMCT and REID community has been fast growing. As such, we are organizing this workshop 
-        for a second time, aiming to gather the state-of-the-art technologies and brainstorm for future directions. 
+      <p>The <a href="https://reid-mct.github.io/2017/">1st MTMCT and ReID workshop</a> was successfully held at CVPR 2017. 
+        In the past two years, the MTMCT and REID community has been growing fast. As such, we are organizing this workshop 
+        for a second time, aiming to gather the state-of-the-art technologies and brainstorm future directions. 
         We are especially welcoming ideas and contributions that embrace the relationship and future of MTMCT and ReID, 
-        the two deeply connected domains. 
+        two deeply connected domains. 
         A distinct feature of this workshop is a MTMCT and ReID challenge. The challenge consists of three tracks: multi-target 
-        multi-camera tracking, person ReID with same train/test domains, person ReID with distinct train/test domains. 
+        multi-camera tracking, person ReID with same train/test domains, and person ReID with distinct train/test domains. 
         This workshop aims to encourage lively discussions on shaping future research directions for both academia and the industry.<br></p>
       <hr />
 
@@ -84,24 +85,99 @@
       <h3>
         <a id="challenge" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MTMCT and REID Challenge</h3>
       This workshop will hold an international challenge on the topics of person re-identification and multi-target multi-camera tracking (MTMCT). There will be three 
-      competition tracks which are briefly described below. The challenge webpage is under construction. <br><br>
+      competition tracks which are briefly described below. <i>The challenge rules are still being updated.</i><br><br>
       
       <U>Track 1: Multi-Target Multi-Camera Tracking (MTMCT)</U><br>
-      In this track, the large-scale training / validation sets will be based on the publicly available DukeMTMC dataset. In testing, participating teams will 
-      have access to our testing dataset. Labels of this testing set are only known to the organizers. This testing set is part of the original DukeMTMC dataset, 
-      so it has similar data distribution with the training / validation sets.<br><br>
+      This workshop challenge aims to further push the state of the art in Multi-Target Multi-Camera Tracking. The MTMCT challenge features videos from 8 synchronized disjoint cameras recorded on the Duke University campus, with training/validation and test data. The goal is to correctly track people within and across cameras, with emphasis on correct identification. All participants are encouraged to submit their results on the <a href="https://motchallenge.net/results/DukeMTMCT/">DukeMTMCT Challenge</a> on MOTChallenge. The participating entry with the highest multi-camera IDF1 score on the test-hard sequence will be selected as the winner. Sample code from the <a href="https://github.com/ergysr/DeepCC">DeepCC tracker</a> is available. Below we list the rules of the competition.<br><br>
+
+      <div class="container">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1">Rules</a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+              <ul class="list-group">
+                <li class="list-group-item">Any person detector, pre-trained neural network, or additional public data related to DukeMTMC can be used.</li>
+                <li class="list-group-item">Each participating research group can submit to the server a maximum of 4 times, even if the research group consists of multiple researchers. <a href="http://vision.cs.duke.edu/DukeMTMC/details.html#evaluation">Guidelines</a></li>
+                <li class="list-group-item">To facilitate further advances in the field participating groups are required to release code publicly one week before the workshop, to be considered eligible, and all repositories will be shared with the community. The organizing committee reserves the right to revoke a prize if the winning method's code does not reproduce scores similar to the submission.</li>
+                <li class="list-group-item">A paper submission to the workshop is encouraged but not required.</li>
+                <li class="list-group-item">If you think a rule is unclear or not covered in this list, please contact the organizers.</li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <U>Track 2: Person Re-identification with the Same Train / Test Domain</U><br>
-      This track will evaluate the scalability of ReID models. Training and validation data will be made available
-      from the DukeMTMC-reID dataset, which have 16,522 training images of 702 identities, 2,228 query images of the other 702 identities
-      and 17,661 gallery images (702 ID + 408 distractor ID). For testing, teams will access our testing set, which has a similar data 
-      distribution with the training / validation sets. The test set is part of the original DukeMTMC dataset.<br><br>
+      This track will evaluate the scalability of ReID models. The setup consists of person images from the DukeMTMC dataset, categorized into a training/validation set and a test set. For each query image, participating entries are expected to rank the gallery set in order of decreasing similarity, with the intent that highly ranked images are co-identical to the query. The method with the highest mAP score will be selected as the winner, and rank-1 accuracy will be used as a tie-breaker if necessary.<br><br>
+
+      <div class="container">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse2">Rules</a>
+              </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+              <ul class="list-group">
+                <li class="list-group-item">Only person images from the DukeMTMC dataset can be used, while images from other datasets are not allowed.</li> 
+                <li class="list-group-item">For training/validation any images from the DukeMTMC trainval set can be used. Participants can either extract images from the DukeMTMC videos (more samples but time consuming), or use existing datasets that have already extracted samples for each identity of trainval. [<a href="https://github.com/layumi/DukeMTMC-reID_evaluation">DukeMTMC-reID</a>][<a href="https://github.com/NEU-Gou/DukeReID">DukeMTMC4ReID</a>]</li>
+                <li class="list-group-item">Methods that rely on deep learning are allowed to initialize their weights with standard ImageNet pre-trained models.</li>
+                <li class="list-group-item">Using inputs such as pose estimation, attributes, foreground masks, semantic segmentation, is allowed as long as these inputs are obtained using off-the-shelf, publicly available methods. It is not allowed however to re-train these methods using Duke data. Tuning the free parameters of these methods is allowed.</li>
+                <li class="list-group-item">All images from the DukeMTMC trainval set can be used when preparing the final models. Images from the test set are not.</li>
+                <li class="list-group-item">Use of training images from other person ReID datasets is not allowed for this challenge. It is well-known that more training data helps, so the focus is on researching innovative methods.</li>
+                <li class="list-group-item">Re-ranking methods are allowed.</li>
+                <li class="list-group-item">Test data for this challenge will be released in the form of one zip file with 20k+ images. The identity labels for these images are kept secret. The test set includes images that will be used for evaluation (query and gallery images) and a large number of distractors. The test set will be available on May 15. </li>
+                <li class="list-group-item">The test data will contain a single folder of images indexed from 1 to N. For each image in the test data, participants should provide a list of the 2k indices of the most similar images. The submission file will then be evaluated on the test server. [Link TBA]</li>
+                <li class="list-group-item">Each participating research group can submit to the server a maximum of 4 times, even if the research group consists of multiple researchers.</li>
+                <li class="list-group-item">To facilitate further advances in the field participating groups are required to release code publicly one week before the workshop, to be considered eligible, and all repositories will be shared with the community. The organizing committee reserves the right to revoke a prize if the winning method's code does not reproduce scores similar to the submission.</li>
+                <li class="list-group-item">If you think a rule is unclear or not covered in this list, please contact the organizers.</li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <U>Track 3: Person Re-identification with Different Train / Test Domains</U><br>
-      To evaluate the generalization ability of algorithms, this track will ask teams to use the publicly available Market-1501 dataset
-      for training / validation. This dataset has 32,668 annotated bounding boxes of 1,501 identities. The training and validation sets 
-      are roughly equal in size. In testing, the same test set from Track 1 and Track 2 will be used. Since the training / validation 
-      sets have different data distributions with the test set, Track 3 will assess the cross-domain generalization ability.<br><br>
+      To evaluate the generalization ability of algorithms, this track will ask teams to use the publicly available <a href="http://www.liangzheng.org/Project/project_reid.html">Market-1501 dataset</a>
+      for training / validation. In this challenge the setup consists of person images from the Market-1501 dataset used for training and validation, and a test set from DukeMTMC with secret labels (to be released). For each query image in the test set, participating entries are expected to rank the gallery set in order of decreasing similarity, with the intent that highly ranked images are co-identical to the query. The method with the highest mAP score will be selected as the winner, and rank-1 accuracy will be used as a tie-breaker if necessary.<br><br>
+
+      <div class="container">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse3">Rules</a>
+              </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+              <ul class="list-group">
+                <li class="list-group-item">Only person images from the Market-1501 dataset can be used for training. DukeMTMC images are not to be used for validation, and we expect that all participants will act honorably.</li> 
+                <li class="list-group-item">Validation on other datasets is allowed.</li>
+                <li class="list-group-item">Methods that rely on deep learning are allowed to initialize their weights with standard ImageNet pre-trained models.</li>
+                <li class="list-group-item">Using inputs such as pose estimation, attributes, foreground masks, semantic segmentation, is allowed as long as these inputs are obtained using off-the-shelf, publicly available methods. It is not allowed however to re-train these methods using DukeMTMC or Market-1501 data. Tuning the free parameters of these methods is allowed.</li>
+                <li class="list-group-item">All 1501 identities from Market are allowed to be used when preparing the final models. Images from the test set or from external datasets are not.</li>
+                <li class="list-group-item">Use of training images from other person ReID datasets is not allowed for this challenge. It is well-known that more training data helps, so the focus is on researching innovative methods.</li>
+                <li class="list-group-item">Re-ranking methods are allowed.</li>
+                <li class="list-group-item">Test data for this challenge will be released in the form of one zip file with 20k+ images. The identity labels for these images are kept secret. The test set includes images that will be used for evaluation (query and gallery images) and a large number of distractors. The test set will be available on May 15. </li>
+                <li class="list-group-item">The test data will contain a single folder of images indexed from 1 to N. For each image in the test data, participants should provide a list of the 2k indices of the most similar images. The submission file will then be evaluated on the test server. [Link TBA]</li>
+                <li class="list-group-item">Each participating research group can submit to the server a maximum of 4 times, even if the research group consists of multiple researchers.</li>
+                <li class="list-group-item">To facilitate further advances in the field participating groups are required to release code publicly one week before the workshop, to be considered eligible, and all repositories will be shared with the community. The organizing committee reserves the right to revoke a prize if the winning method's code does not reproduce scores similar to the submission.</li>
+                <li class="list-group-item">If you think a rule is unclear or not covered in this list, please contact the organizers.</li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <br>
 
 
@@ -236,14 +312,16 @@
 
       <h3>
         <a id="contact" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact</h3>
-      For any information, please send an <a href="mailto:liang.zheng@anu.edu.au;eddy@visionsemantics.com;ergysristani@gmail.com;jingdw@microsoft.com">e-mail</a>      to Ergys Ristani, Xiatian Zhu, Liang Zheng and Jingdong Wang.
+      For any information, please send an <a href="mailto:liang.zheng@anu.edu.au;eddy@visionsemantics.com;ristani@cs.duke.edu;jingdw@microsoft.com">e-mail</a>      to Ergys Ristani, Xiatian Zhu, Liang Zheng and Jingdong Wang.
 
     </section>
     <footer>
 
     </footer>
   </div>
-  <script src="./scripts/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <!--<script src="./javascripts/scale.fix.js"></script>-->
   <script>
     (function (i, s, o, g, r, a, m) {
